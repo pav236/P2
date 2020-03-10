@@ -96,14 +96,13 @@ Ejercicios
 ### Etiquetado manual de los segmentos de voz y silencio
 
 - Etiquete manualmente los segmentos de voz y silencio del fichero grabado al efecto. Inserte, a 
-  continuación, una captura de `wavesurfer` en la que se vea con claridad la señal temporal, el contorno de
-  potencia y la tasa de cruces por cero, junto con el etiquetado manual de los segmentos.
+  continuación, una captura de `wavesurfer` en la que se vea con claridad la señal temporal, el contorno de potencia y la tasa de cruces por cero, junto con el etiquetado manual de los segmentos.
+
 
 
 - A la vista de la gráfica, indique qué valores considera adecuados para las magnitudes siguientes:
 
-	* Incremento del nivel potencia en dB, respecto al nivel correspondiente al silencio inicial, para estar
-      seguros de que un segmento de señal se corresponde con voz.
+	* Incremento del nivel potencia en dB, respecto al nivel correspondiente al silencio inicial, para estar seguros de que un segmento de señal se corresponde con voz.
 
 	* Duración mínima razonable de los segmentos de voz y silencio.
 
