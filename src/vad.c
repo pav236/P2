@@ -3,6 +3,8 @@
 #include <stdio.h>
 
 #include "vad.h"
+#include "pav_analysis.h"
+
 
 const float FRAME_TIME = 10.0F; /* in ms. */
 
@@ -13,7 +15,7 @@ const float FRAME_TIME = 10.0F; /* in ms. */
  */
 
 const char *state_str[] = {
-  "UNDEF", "S", "V", "INIT"
+  "UNDEF", "S", "V", "INIT","MS","MV"
 };
 
 const char *state2str(VAD_STATE st) {
@@ -42,7 +44,8 @@ Features compute_features(const float *x, int N) {
    * For the moment, compute random value between 0 and 1 
    */
   Features feat;
-  feat.zcr = feat.p = feat.am = (float) rand()/RAND_MAX;
+  //feat.zcr = feat.p = feat.am = (float) rand()/RAND_MAX;
+  feat.p=compute_power(x,N);
   return feat;
 }
 
@@ -76,6 +79,7 @@ unsigned int vad_frame_size(VAD_DATA *vad_data) {
  * TODO: Implement the Voice Activity Detection 
  * using a Finite State Automata
  */
+int i=0;
 
 VAD_STATE vad(VAD_DATA *vad_data, float *x) {
 
@@ -89,17 +93,47 @@ VAD_STATE vad(VAD_DATA *vad_data, float *x) {
 
   switch (vad_data->state) {
   case ST_INIT:
-    vad_data->state = ST_SILENCE;
+    if(i==0)
+      vad_data->k0 ç0 f.p;
+    vad_data->k0 = vad_data->k0 + f.p;
+    i++;  
+    if(i==10){
+      vad_data->state = ST_SILENCE;
+      vad_data->k0 = vad_data->k0 / (i+1);
+      vad_data->k1 = vad_data->k0 + 0.5;
+      vad_data->k2 = vad_data->k0 + 10.5;
+
+    }
     break;
 
   case ST_SILENCE:
-    if (f.p > 0.95)
-      vad_data->state = ST_VOICE;
+    if (f.p > vad_data->k1)
+      vad_data->state = ST_MAYBEVOICE;
+    break;
+
+  case ST_MAYBESILENCE:
+    if (f.p < vad_data ->k1){
+      //vad_data->prevstate=ST_SILENCE;
+      vad_data->state=ST_SILENCE;
+    }
+    if (f.p > vad_data->k2){
+      //vad_data->prevstate=ST_VOICE;
+      vad_data->state=ST_VOICE;
+      vad_data->state=ST_VOICE;
+    }
+    break:
+
+  case ST_MAYBEVOICE:
+    if (f.p > vad_data->k2){
+      vad_data->state =ST_VOICE;
+      //vad_data->prevstate=ST_SILENCE;
+      vad_data->state=ST_SILENCE;
+    }
     break;
 
   case ST_VOICE:
-    if (f.p < 0.01)
-      vad_data->state = ST_SILENCE;
+    if (f.p < vad_data->k1)
+      vad_data->state = ST_MAYBESILENCE;
     break;
 
   case ST_UNDEF:
@@ -107,7 +141,9 @@ VAD_STATE vad(VAD_DATA *vad_data, float *x) {
   }
 
   if (vad_data->state == ST_SILENCE ||
-      vad_data->state == ST_VOICE)
+      vad_data->state == ST_VOICE ||
+      vad_data->state == ST_MAYBESILENCE ||
+      vad_data->state == ST_MAYBEVOICE)
     return vad_data->state;
   else
     return ST_UNDEF;
