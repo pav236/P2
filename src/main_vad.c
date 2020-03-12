@@ -1,8 +1,9 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <errno.h>
 #include <sndfile.h>
+#include <errno.h>
+
 
 #include "vad.h"
 #include "vad_docopt.h"
