@@ -98,22 +98,29 @@ Ejercicios
 - Etiquete manualmente los segmentos de voz y silencio del fichero grabado al efecto. Inserte, a 
   continuación, una captura de `wavesurfer` en la que se vea con claridad la señal temporal, el contorno de potencia y la tasa de cruces por cero, junto con el etiquetado manual de los segmentos.
 
-<<<<<<<
 	Etiquetamos manualmente los segementos de voz y silencio:
+
 <img src="img/1.png" width="640" align="center">
+
 	Obtenemos las 4 columnas por separado:
 <img src="img/2.png" width="640" align="center">
 <img src="img/3.png" width="640" align="center">
 <img src="img/4.png" width="640" align="center">
+
 	Utilizamos el comando "cut -fx pav_2361.txt > pav_2361.zcr/.pot/.am" para segmentarlo. Nos será útil para los ánalisis más adelante. En nuestro caso, f4 corresponde a zcr, f3 a amplitud y f2 a potencia.
 	Obtenemos los cruces por cero en wavesurfer:
+
 <img src="img/5.png" width="640" align="center">
+
 	Para una vista más general del audio:
+
 <img src="img/6.png" width="640" align="center">
+
 	Aquí podemos ver el de la amplitud:
+
 <img src="img/a.png" width="640" align="center">		
-=======
->>>>>>> 5179881f7ce732ba88e2bb2ed44c8ca80566ecaf
+
+
 
 - A la vista de la gráfica, indique qué valores considera adecuados para las magnitudes siguientes:
 
