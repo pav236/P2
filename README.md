@@ -98,7 +98,7 @@ Ejercicios
 - Etiquete manualmente los segmentos de voz y silencio del fichero grabado al efecto. Inserte, a 
   continuación, una captura de `wavesurfer` en la que se vea con claridad la señal temporal, el contorno de potencia y la tasa de cruces por cero, junto con el etiquetado manual de los segmentos.
 
-<<<<<<< HEAD
+<<<<<<<
 	Etiquetamos manualmente los segementos de voz y silencio:
 <img src="img/1.png" width="640" align="center">
 	Obtenemos las 4 columnas por separado:
@@ -119,10 +119,12 @@ Ejercicios
 
 	* Incremento del nivel potencia en dB, respecto al nivel correspondiente al silencio inicial, para estar seguros de que un segmento de señal se corresponde con voz.
 	<img src="img/b.png" width="640" align="center">
+	
 	A partir de aproximadamente 80dB.
 
 	* Duración mínima razonable de los segmentos de voz y silencio.
 	<img src="img/7.png" width="640" align="center">
+
 	Como podemos ver en los resultados, la duración mínima del silencio es 0.31518 s y la voz es de 1.103157s (haciendo la diferencia). 
 
 	* ¿Es capaz de sacar alguna conclusión a partir de la evolución de la tasa de cruces por cero?
