@@ -98,6 +98,7 @@ Ejercicios
 - Etiquete manualmente los segmentos de voz y silencio del fichero grabado al efecto. Inserte, a 
   continuación, una captura de `wavesurfer` en la que se vea con claridad la señal temporal, el contorno de potencia y la tasa de cruces por cero, junto con el etiquetado manual de los segmentos.
 
+<<<<<<< HEAD
 	Etiquetamos manualmente los segementos de voz y silencio:
 <img src="img/1.png" width="640" align="center">
 	Obtenemos las 4 columnas por separado:
@@ -111,6 +112,8 @@ Ejercicios
 <img src="img/6.png" width="640" align="center">
 	Aquí podemos ver el de la amplitud:
 <img src="img/a.png" width="640" align="center">		
+=======
+>>>>>>> 5179881f7ce732ba88e2bb2ed44c8ca80566ecaf
 
 - A la vista de la gráfica, indique qué valores considera adecuados para las magnitudes siguientes:
 
