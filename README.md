@@ -98,16 +98,32 @@ Ejercicios
 - Etiquete manualmente los segmentos de voz y silencio del fichero grabado al efecto. Inserte, a 
   continuación, una captura de `wavesurfer` en la que se vea con claridad la señal temporal, el contorno de potencia y la tasa de cruces por cero, junto con el etiquetado manual de los segmentos.
 
-<img src="img/tanh.png" width="640" align="center">
-<img src="img/tanh.png" width="640" align="center">
+	Etiquetamos manualmente los segementos de voz y silencio:
+<img src="img/1.png" width="640" align="center">
+	Obtenemos las 4 columnas por separado:
+<img src="img/2.png" width="640" align="center">
+<img src="img/3.png" width="640" align="center">
+<img src="img/4.png" width="640" align="center">
+	Utilizamos el comando "cut -fx pav_2361.txt > pav_2361.zcr/.pot/.am" para segmentarlo. Nos será útil para los ánalisis más adelante. En nuestro caso, f4 corresponde a zcr, f3 a amplitud y f2 a potencia.
+	Obtenemos los cruces por cero en wavesurfer:
+<img src="img/5.png" width="640" align="center">
+	Para una vista más general del audio:
+<img src="img/6.png" width="640" align="center">
+	Aquí podemos ver el de la amplitud:
+<img src="img/a.png" width="640" align="center">		
 
 - A la vista de la gráfica, indique qué valores considera adecuados para las magnitudes siguientes:
 
 	* Incremento del nivel potencia en dB, respecto al nivel correspondiente al silencio inicial, para estar seguros de que un segmento de señal se corresponde con voz.
+	<img src="img/b.png" width="640" align="center">
+	A partir de aproximadamente 80dB.
 
 	* Duración mínima razonable de los segmentos de voz y silencio.
+	<img src="img/7.png" width="640" align="center">
+	Como podemos ver en los resultados, la duración mínima del silencio es 0.31518 s y la voz es de 1.103157s (haciendo la diferencia). 
 
 	* ¿Es capaz de sacar alguna conclusión a partir de la evolución de la tasa de cruces por cero?
+	En el diagrama anterior de cruces por cero vemos que hay unos picos los cuales corresponden a fricativas sordas, por ejemplo, estamoS en claSe (frase contenida en nuestro audio).
 
 
 ### Desarrollo del detector de actividad vocal
