@@ -107,7 +107,9 @@ Ejercicios
 <img src="img/3.png" width="640" align="center">
 <img src="img/4.png" width="640" align="center">
 
-	Utilizamos el comando "cut -fx pav_2361.txt > pav_2361.zcr/.pot/.am" para segmentarlo. Nos será útil para los ánalisis más adelante. En nuestro caso, f4 corresponde a zcr, f3 a amplitud y f2 a potencia.
+	Utilizamos el comando "cut -fx pav_2361.txt > pav_2361.zcr/.pot/.am" para segmentarlo. 
+	Nos será útil para los ánalisis más adelante. En nuestro caso, f4 corresponde a zcr, f3 a amplitud y f2 a potencia.
+
 	Obtenemos los cruces por cero en wavesurfer:
 
 <img src="img/5.png" width="640" align="center">
