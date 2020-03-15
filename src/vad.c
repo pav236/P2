@@ -2,20 +2,18 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include "vad.h"
 #include "pav_analysis.h"
-
+#include "vad.h"
 
 const float FRAME_TIME = 10.0F; /* in ms. */
 
 /* 
- * As the output state is only ST_VOICE, ST_SILENCE, or ST_UNDEF,
- * only this labels are needed. You need to add all labels, in case
- * you want to print the internal state in string format
- */
+   As the output state is only ST_VOICE, ST_SILENCE, or ST_UNDEF,
+   only this labels are needed. You need to add all labels, in case
+   you want to print the internal state in string format */
 
 const char *state_str[] = {
-  "UNDEF", "S", "V", "INIT","MS","MV"
+  "UNDEF", "S", "V", "INIT","MV","MS"
 };
 
 const char *state2str(VAD_STATE st) {
@@ -45,7 +43,7 @@ Features compute_features(const float *x, int N) {
    */
   Features feat;
   //feat.zcr = feat.p = feat.am = (float) rand()/RAND_MAX;
-  feat.p=compute_power(x,N);
+  feat.p = compute_power(x,N);  // descomentada de línea 45, comentada la 46
   return feat;
 }
 
@@ -79,12 +77,11 @@ unsigned int vad_frame_size(VAD_DATA *vad_data) {
  * TODO: Implement the Voice Activity Detection 
  * using a Finite State Automata
  */
-int i=0;
+int i = 0;
 
 VAD_STATE vad(VAD_DATA *vad_data, float *x) {
 
-  /* 
-   * TODO: You can change this, using your own features,
+  /* TODO: You can change this, using your own features,
    * program finite state automaton, define conditions, etc.
    */
 
@@ -93,16 +90,15 @@ VAD_STATE vad(VAD_DATA *vad_data, float *x) {
 
   switch (vad_data->state) {
   case ST_INIT:
-    if(i==0)
+    if (i == 0)
       vad_data->k0 = f.p;
-    vad_data->k0 = vad_data->k0 + f.p;
-    i++;  
-    if(i==10){
-      vad_data->state = ST_SILENCE;
+      vad_data->k0 = vad_data->k0 + f.p;
+    i++;
+    if (i == 10){
+      vad_data->state = ST_SILENCE; 
       vad_data->k0 = vad_data->k0 / (i+1);
       vad_data->k1 = vad_data->k0 + 0.5;
       vad_data->k2 = vad_data->k0 + 10.5;
-
     }
     break;
 
@@ -110,24 +106,22 @@ VAD_STATE vad(VAD_DATA *vad_data, float *x) {
     if (f.p > vad_data->k1)
       vad_data->state = ST_MAYBEVOICE;
     break;
-
+    
   case ST_MAYBESILENCE:
-    if (f.p < vad_data ->k1){
-      //vad_data->prevstate=ST_SILENCE;
-      vad_data->state=ST_SILENCE;
+    if (f.p < vad_data->k1){
+      vad_data->state = ST_SILENCE;
     }
     if (f.p > vad_data->k2){
-      //vad_data->prevstate=ST_VOICE;
-      vad_data->state=ST_VOICE;
-      vad_data->state=ST_VOICE;
+      vad_data->state = ST_VOICE;
     }
     break;
-
+  
   case ST_MAYBEVOICE:
     if (f.p > vad_data->k2){
-      vad_data->state =ST_VOICE;
-      //vad_data->prevstate=ST_SILENCE;
-      vad_data->state=ST_SILENCE;
+      vad_data->state = ST_VOICE;
+    }
+    if (f.p < vad_data->k1){
+      vad_data->state = ST_SILENCE;
     }
     break;
 

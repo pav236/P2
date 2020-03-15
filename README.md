@@ -103,8 +103,11 @@ Ejercicios
 <img src="img/1.png" width="640" align="center">
 
 	Obtenemos las 4 columnas por separado:
+
 <img src="img/2.png" width="640" align="center">
+
 <img src="img/3.png" width="640" align="center">
+
 <img src="img/4.png" width="640" align="center">
 
 	Utilizamos el comando "cut -fx pav_2361.txt > pav_2361.zcr/.pot/.am" para segmentarlo. 
@@ -131,10 +134,11 @@ Ejercicios
 	
 	A partir de aproximadamente 80dB.
 
+
 	* Duración mínima razonable de los segmentos de voz y silencio.
 	<img src="img/7.png" width="640" align="center">
 
-	Como podemos ver en los resultados, la duración mínima del silencio es 0.31518 s y la voz es de 1.103157s (haciendo la diferencia). 
+	Como podemos ver en los resultados, la duración mínima del silencio es 0.31518s y la voz es de 1.103157s (haciendo la diferencia). 
 
 	* ¿Es capaz de sacar alguna conclusión a partir de la evolución de la tasa de cruces por cero?
 	En el diagrama anterior de cruces por cero vemos que hay unos picos los cuales corresponden a fricativas sordas, por ejemplo, estamoS en claSe (frase contenida en nuestro audio).
@@ -145,15 +149,34 @@ Ejercicios
 - Complete el código de los ficheros de la práctica para implementar un detector de actividad vocal tan
   exacto como sea posible. Tome como objetivo la maximización de la puntuación-F `TOTAL`.
 
+Una de las partes más delicadas fue al tener que decidir los umbrales de detección. Como se ve en las siguientes capturas, fuimos probando diferentes valores hasta encontrar los más óptimos.
+
+<img src="img/d.png" width="640" align="center">
+
+<img src="img/e.png" width="640" align="center">
+
+<img src="img/f.png" width="640" align="center">
+
+
 - Inserte una gráfica en la que se vea con claridad la señal temporal, el etiquetado manual y la detección
   automática conseguida para el fichero grabado al efecto. 
 
+En la primera linea encontramos la transcripción con el etiquetado manual (.lab) y en la segunda el etiquetado usando detección automática (.vad).
+
+<img src="img/c.png" width="640" align="center">
 
 - Explique, si existen. las discrepancias entre el etiquetado manual y la detección automática.
+
+Al hacer el etiquetado manual, no fuimos muy precisas al diferenciar entre voz y silencio, por ejemplo entre letras y palabras muy juntas por lo que, contrastando con la detección automática, la cual es mucho más precisa, vemos que aparecen más segmentaciones ya que la detección es más exacta.
+
+También vemos que por ejemplo, justo al principio una vez empezamos nosotras a hablar el detector automático (.vad) no reconoce que es voz por lo que no la detecta como tal y crea un segmento de silencio.
 
 - Evalúe los resultados sobre la base de datos `db.v4` con el script `vad_evaluation.pl` e inserte a 
   continuación las tasas de sensibilidad (*recall*) y precisión para el conjunto de la base de datos (sólo
   el resumen).
+
+  Vemos que gracias a los cambios que hemos realizado en el código implementando el detector, obtenemos un 92.811%. Hemos obtenido un recall de voz de 96% y de silencio del 82.62%, así como una predicción de voz del 88.61% y de silencio del 93.64%. Resultados mucho más favorables que la primera ejecución.
+  <img src="img/final.png" width="640" align="center">
 
 
 ### Trabajos de ampliación
@@ -178,7 +201,13 @@ Ejercicios
 - Si lo desea, puede realizar también algún comentario acerca de la realización de la práctica que considere
   de interés de cara a su evaluación.
 
+  Como comentario, nos gustaría añadir que nosotras al intentar compilar nuestro código tuvimos algún problema ya que con el comando ninja -C bin no nos aparecía ningún error pero no se nos ejecutaba correctamente, sin mostrar por pantalla lo esperado. Para arreglar el problema, utilizamos la compilación .gcc para que se nos mostraran los errores detalladamente. Con ello, pudimos ver que nos faltaban las librerías básicas (entre otros) para ejecutar nuestro programa, así que las decargamos y arreglado.
 
+  <img src="img/problema.png" width="640" align="center">
+
+  Por último, comentar que con el comando ninja -C bin nos aparece un supuesto error al referirnos a la función compute_power. Como alternativa, hemos usado gcc, creemos que no tenemos ningún error en el programa ya que funciona y se nos ejecuta correctamente.
+
+	
 ### Antes de entregar la práctica
 
 Recuerde comprobar que el repositorio cuenta con los códigos correctos y en condiciones de ser 
