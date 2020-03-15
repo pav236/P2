@@ -141,6 +141,7 @@ Ejercicios
 	Como podemos ver en los resultados, la duración mínima del silencio es 0.31518s y la voz es de 1.103157s (haciendo la diferencia). 
 
 	* ¿Es capaz de sacar alguna conclusión a partir de la evolución de la tasa de cruces por cero?
+	
 	En el diagrama anterior de cruces por cero vemos que hay unos picos los cuales corresponden a fricativas sordas, por ejemplo, estamoS en claSe (frase contenida en nuestro audio).
 
 
