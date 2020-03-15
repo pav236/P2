@@ -141,7 +141,7 @@ Ejercicios
 	Como podemos ver en los resultados, la duración mínima del silencio es 0.31518s y la voz es de 1.103157s (haciendo la diferencia). 
 
 	* ¿Es capaz de sacar alguna conclusión a partir de la evolución de la tasa de cruces por cero?
-	
+
 	En el diagrama anterior de cruces por cero vemos que hay unos picos los cuales corresponden a fricativas sordas, por ejemplo, estamoS en claSe (frase contenida en nuestro audio).
 
 
@@ -177,6 +177,7 @@ También vemos que por ejemplo, justo al principio una vez empezamos nosotras a 
   el resumen).
 
   Vemos que gracias a los cambios que hemos realizado en el código implementando el detector, obtenemos un 92.811%. Hemos obtenido un recall de voz de 96% y de silencio del 82.62%, así como una predicción de voz del 88.61% y de silencio del 93.64%. Resultados mucho más favorables que la primera ejecución.
+  
   <img src="img/final.png" width="640" align="center">
 
 
