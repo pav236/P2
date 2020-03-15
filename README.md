@@ -152,11 +152,11 @@ Ejercicios
 
 Una de las partes más delicadas fue al tener que decidir los umbrales de detección. Como se ve en las siguientes capturas, fuimos probando diferentes valores hasta encontrar los más óptimos.
 
-<img src="img/d.png" width="640" align="center">
+<img src="img/d.PNG" width="640" align="center">
 
-<img src="img/e.png" width="640" align="center">
+<img src="img/e.PNG" width="640" align="center">
 
-<img src="img/f.png" width="640" align="center">
+<img src="img/f.PNG" width="640" align="center">
 
 
 - Inserte una gráfica en la que se vea con claridad la señal temporal, el etiquetado manual y la detección
@@ -164,7 +164,7 @@ Una de las partes más delicadas fue al tener que decidir los umbrales de detecc
 
 En la primera linea encontramos la transcripción con el etiquetado manual (.lab) y en la segunda el etiquetado usando detección automática (.vad).
 
-<img src="img/c.png" width="640" align="center">
+<img src="img/c.PNG" width="640" align="center">
 
 - Explique, si existen. las discrepancias entre el etiquetado manual y la detección automática.
 
@@ -178,7 +178,7 @@ También vemos que por ejemplo, justo al principio una vez empezamos nosotras a 
 
   Vemos que gracias a los cambios que hemos realizado en el código implementando el detector, obtenemos un 92.811%. Hemos obtenido un recall de voz de 96% y de silencio del 82.62%, así como una predicción de voz del 88.61% y de silencio del 93.64%. Resultados mucho más favorables que la primera ejecución.
   
-  <img src="img/final.png" width="640" align="center">
+  <img src="img/final.PNG" width="640" align="center">
 
 
 ### Trabajos de ampliación
@@ -205,7 +205,7 @@ También vemos que por ejemplo, justo al principio una vez empezamos nosotras a 
 
   Como comentario, nos gustaría añadir que nosotras al intentar compilar nuestro código tuvimos algún problema ya que con el comando ninja -C bin no nos aparecía ningún error pero no se nos ejecutaba correctamente, sin mostrar por pantalla lo esperado. Para arreglar el problema, utilizamos la compilación .gcc para que se nos mostraran los errores detalladamente. Con ello, pudimos ver que nos faltaban las librerías básicas (entre otros) para ejecutar nuestro programa, así que las decargamos y arreglado.
 
-  <img src="img/problema.png" width="640" align="center">
+  <img src="img/problema.PNG" width="640" align="center">
 
   Por último, comentar que con el comando ninja -C bin nos aparece un supuesto error al referirnos a la función compute_power. Como alternativa, hemos usado gcc, creemos que no tenemos ningún error en el programa ya que funciona y se nos ejecuta correctamente.
 
